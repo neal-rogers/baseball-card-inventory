@@ -2,14 +2,49 @@
 # -*- coding: utf-8 -*-
 """This is a simple baseball card inventory system."""
 
-import graphx, csv, os
+import graphx, csv, json, os
+
 
 print graphx.BANNER
 
-if os.path.isfile('data\
+def check_file(self):
+    """Docstring
+    """
+    
+    if os.path.isfile('data\cards.json'):
+        print 'We\'ve been here before.'
+        jsoncards = open('cards.json', 'a')
+    else:
+        print 'No file found, importing from CSV...'
+        csvcards = open('cards.csv', 'r')
+        fields = (
+            "UID",
+            "PLAYER",
+            "POSITION",
+            "BRAND",
+            "CID",
+            "YEAR",
+            "CONDITION",
+            "SOLD",
+            "VALUE"
+            )
+        csv_rdr = csv.DictReader(csvcards, fields)
+        print 'Import complete.'
+        csvcards.close()
 
-cfile = open(filename, 'r')
-read_csv = csv.reader(cfile, delimiter=',')
+        with open('cards.json', 'w') as jsonfile:
+            for row in csv_rdr:
+                json.dump(row, jsoncards)
+                jsonfile.write('\n')
+        
+#csvfile = open('cards.csv', 'r')
+#jsonfile = open('cards.json', 'w')
+
+fields = ("UID","PLAYER","POSITION","BRAND","CID","YEAR","CONDITION","SOLD","VALUE")
+csv_rdr = csv.DictReader(csvfile, fields)
+for row in csv_rdr:
+    json.dump(row, jsonfile)
+    jsonfile.write('\n')
 
 for row in read_csv:
     uid = row[0]
@@ -24,7 +59,7 @@ elif ask_1 == 'Search' or 'Report':
 ask_2 = raw_input('{A}? '.format(A=reply_1)).title()
 
 if ask_2 == 'Yes' or 'Add':
-    raw_input('Enter player name, position, or ')
+    raw_input('Enter player name, position, team: ')
 elif ask_2 == 'Search' or 'Report':
     reply_2 = 'Search By'
 
