@@ -2,26 +2,96 @@
 # -*- coding: utf-8 -*-
 """This is a simple baseball card inventory system."""
 
-import graphx
+import graphx, csv, os
 
 print graphx.BANNER
 
-f-ask = raw_input('What would you like to do?, "Update", "Search" or "Report"?: ').title()
+if os.path.isfile('data\
 
-try:
-    if f-ask == 'Update':
-        f-reply = 'Add'
-    elif f-ask == 'Search' OR 'Report':
-        f-reply = 'Search by'
-except TypeError:
-    pass
+cfile = open(filename, 'r')
+read_csv = csv.reader(cfile, delimiter=',')
 
-"""f-reply = raw_input("{f-reply}"?: '.format(f-reply).title()
+for row in read_csv:
+    uid = row[0]
 
-if ACCENT == 'Ceramic Glaze':
-    HIGHLIGHT_1 = 'Basically White'
-    HIGHLIGHT_2 = 'White'
-elif ACCENT == 'Cumulus Nimbus':
-    HIGHLIGHT_1 = 'Off-White'
-    HIGHLIGHT_2 = 'Paper White'
+ask_1 = raw_input('What would you like to do?, Update, Search, or Report?: ').title()
+
+if ask_1 == 'Update':
+    reply_1 = 'Add'
+elif ask_1 == 'Search' or 'Report':
+    reply_1 = 'Search By'
+
+ask_2 = raw_input('{A}? '.format(A=reply_1)).title()
+
+if ask_2 == 'Yes' or 'Add':
+    raw_input('Enter player name, position, or ')
+elif ask_2 == 'Search' or 'Report':
+    reply_2 = 'Search By'
+
+    uid += len() 
+    new_card = {'uid': , 'player': , 'position': , 'cid': , 'year': , 'condition':}
+    sreply = 'Add'
+elif fask == 'Search' or 'Report':
+    sreply = 'Search By'
+
+nask = raw_input('{A}? '.format(A=freply)).title()
 """
+"""
+              
+if ask_3 == 'Report'
+    reply_3 = '
+
+def cards-sold (filename):
+    """Opens File using json and stores data in dict.
+    Args:
+        m_file = Opens file.
+        m_read = Loads json file.
+        m_data(dict) = Placeholder for data.
+
+    Returns:
+        m_data(dict) = Market density dictionary.
+
+    Examples:
+        >>> 
+    """
+
+    m_file = open(filename, 'r')
+    m_read = json.load(cards)
+    m_data = {}
+
+    for values in m_read['data']:
+        boro = values[8].strip()
+
+        if boro in m_data:
+            m_data[boro] += 1
+        else:
+            m_data[boro] = 1
+    return m_data
+
+
+def correlate_data(restaurants, markets, outputfile):
+    """Combines Data for Boroughs and returns a Dict AVG Score, markets/restaur.
+    Args:
+        restaurants(dict) = Restaurant Score summary file.
+        markets(dict) = Market Density summary file.
+
+    Returns:
+        None
+
+    Examples:
+    """
+
+    restaurants = get_score_summary(restaurants)
+    markets = get_market_density(markets)
+    data_dict = {}
+
+    for key, value in markets.iteritems():
+        boro = key.upper()
+        m_val = float(value)
+        r_val = float(restaurants[boro][0])
+
+        if boro in restaurants:
+            data_dict[boro] = restaurants[boro][1], m_val/r_val
+
+    with open(outputfile, 'w') as outfile:
+        json.dump(data_dict, outfile)
