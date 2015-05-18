@@ -33,7 +33,7 @@ def check_file(self):
             "CONDITION",
             "SOLD",
             "VALUE"
-            )
+            ) 
 
         csv_rdr = csv.DictReader(csvcards, fields)
         jsoncards = open('data\cards.json', 'a')
@@ -75,57 +75,4 @@ nask = raw_input('{A}? '.format(A=freply)).title()
 if ask_3 == 'Report':
     pass
 
-def cardssold (filename):
-    """Opens File using json and stores data in dict.
-    Args:
-        m_file = Opens file.
-        m_read = Loads json file.
-        m_data(dict) = Placeholder for data.
-
-    Returns:
-        m_data(dict) = Market density dictionary.
-
-    Examples:
-        >>> 
-    """
-
-    m_file = open(filename, 'r')
-    m_read = json.load(cards)
-    m_data = {}
-
-    for values in m_read['data']:
-        boro = values[8].strip()
-
-        if boro in m_data:
-            m_data[boro] += 1
-        else:
-            m_data[boro] = 1
-    return m_data
-
-
-def correlate_data(restaurants, markets, outputfile):
-    """Combines Data for Boroughs and returns a Dict AVG Score, markets/restaur.
-    Args:
-        restaurants(dict) = Restaurant Score summary file.
-        markets(dict) = Market Density summary file.
-
-    Returns:
-        None
-
-    Examples:
-    """
-
-    restaurants = get_score_summary(restaurants)
-    markets = get_market_density(markets)
-    data_dict = {}
-
-    for key, value in markets.iteritems():
-        boro = key.upper()
-        m_val = float(value)
-        r_val = float(restaurants[boro][0])
-
-        if boro in restaurants:
-            data_dict[boro] = restaurants[boro][1], m_val/r_val
-
-    with open(outputfile, 'w') as outfile:
-        json.dump(data_dict, outfile)
+# def c_sold ():
