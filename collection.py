@@ -34,11 +34,9 @@ def check_file(self):
             "SOLD",
             "VALUE"
             )
+
         csv_rdr = csv.DictReader(csvcards, fields)
-
-        
-
-        jsoncards = open('cards.json', 'a')
+        jsoncards = open('data\cards.json', 'a')
 
         with jsoncards:
             for row in csv_rdr:
