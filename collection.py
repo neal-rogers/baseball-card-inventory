@@ -8,15 +8,21 @@ import graphx, csv, json, os
 print graphx.BANNER
 
 def check_file(self):
-    """Docstring
+    """Args:
+        None.
+    Returns:
+        something() = stuff.
+
+    Examples:
+        >>> 
     """
     
     if os.path.isfile('data\cards.json'):
-        print 'We\'ve been here before.'
-        jsoncards = open('cards.json', 'a')
+        print 'Loading database.'
+        jsoncards = open('data\cards.json', 'a')
     else:
         print 'No file found, importing from CSV...'
-        csvcards = open('cards.csv', 'r')
+        csvcards = open('data\cards.csv', 'r')
         fields = (
             "UID",
             "PLAYER",
@@ -29,25 +35,20 @@ def check_file(self):
             "VALUE"
             )
         csv_rdr = csv.DictReader(csvcards, fields)
-        print 'Import complete.'
-        csvcards.close()
 
-        with open('cards.json', 'w') as jsonfile:
+        
+
+        jsoncards = open('cards.json', 'a')
+
+        with jsoncards:
             for row in csv_rdr:
                 json.dump(row, jsoncards)
-                jsonfile.write('\n')
-        
+#                jsoncards.write('\n')
+
+#        csvcards.close()
+        print 'Import complete.'        
 #csvfile = open('cards.csv', 'r')
 #jsonfile = open('cards.json', 'w')
-
-fields = ("UID","PLAYER","POSITION","BRAND","CID","YEAR","CONDITION","SOLD","VALUE")
-csv_rdr = csv.DictReader(csvfile, fields)
-for row in csv_rdr:
-    json.dump(row, jsonfile)
-    jsonfile.write('\n')
-
-for row in read_csv:
-    uid = row[0]
 
 ask_1 = raw_input('What would you like to do?, Update, Search, or Report?: ').title()
 
@@ -64,7 +65,7 @@ elif ask_2 == 'Search' or 'Report':
     reply_2 = 'Search By'
 
     uid += len() 
-    new_card = {'uid': , 'player': , 'position': , 'cid': , 'year': , 'condition':}
+#    new_card = {'uid': , 'player': , 'position': , 'cid': , 'year': , 'condition':}
     sreply = 'Add'
 elif fask == 'Search' or 'Report':
     sreply = 'Search By'
@@ -73,10 +74,10 @@ nask = raw_input('{A}? '.format(A=freply)).title()
 """
 """
               
-if ask_3 == 'Report'
-    reply_3 = '
+if ask_3 == 'Report':
+    pass
 
-def cards-sold (filename):
+def cardssold (filename):
     """Opens File using json and stores data in dict.
     Args:
         m_file = Opens file.
