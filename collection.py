@@ -6,9 +6,10 @@
 import csv, json, graphx
 
 
-csvfile = open('data\cards.csv', 'r')
-jsonfile = open('data\cards.json', 'w')
-fields = (
+
+def csvimport(csvdata):
+    jsonfile = open('data\cards.json', 'w')
+    fields = (
             "UID",
             "PLAYER",
             "POSITION",
@@ -19,15 +20,17 @@ fields = (
             "SOLD",
             "VALUE"
             )
+    reader = csv.DictReader(csvdata, fields)
+    for row in reader:
+        json.dump(row, jsonfile)
+        jsonfile.write('\n')
 
-reader = csv.DictReader(csvfile, fields)
-for row in reader:
-    json.dump(row, jsonfile)
-    jsonfile.write('\n')
+    jsonfile.close()
 
 def main():
-    print graphx.BANNER
-
+    #print graphx.BANNER
+    csvfile = open('data\cards.csv', 'r')
+    csvimport(csvfile)
 
 if __name__ == '__main__':
     main()
